@@ -1,0 +1,30 @@
+.datarow-bg {
+    display: table-row;
+}
+.datarow-bg:hover {
+    background-color:  #9fdfbf !important;
+    cursor: pointer;    
+}
+
+.v-text-field .v-input__control .v-input__slot {
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+.errortext {
+    color:red;
+    font-weight: bold;
+}
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.errortextShow {
+    animation: fade 4s;
+    opacity: 0;
+}
