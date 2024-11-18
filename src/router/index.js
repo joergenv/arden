@@ -3,13 +3,18 @@ import HomeView from '../views/HomeView.vue'
 import ManufacturersView from '@/views/ManufacturersView.vue'
 import TractorModelView from '@/views/TractorModelView.vue'
 import PropertiesView from '@/views/PropertiesView.vue'
-
+import Artifacts from '@/views/Artifacts.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/artifacts',
+    name: 'Udstilling',
+    component: Artifacts
   },
   {
     path: '/models',

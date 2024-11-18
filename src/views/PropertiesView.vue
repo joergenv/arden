@@ -1,6 +1,6 @@
 <template>
     <div class="pa-10">
-        <v-form ref="form">
+        <v-form ref="form" class="ardenform">
         <v-container class="border-sm">
           <h2>Egenskaber</h2><br>
             <v-row>
@@ -21,20 +21,25 @@
                     <v-btn text="Ryd" @click="clearEntity()" v-bind:disabled="invalidnumber"/>
                 </v-col>    
             </v-row>
+            <v-row>
+              <v-col>
+                <v-data-table :items="$store.state.properties" :headers="headers" variant="elevated">
+                <template v-slot:item="{item}" >
+                  <tr class="datarow-bg" @click.stop="editItem(item)">
+                    <td>{{ item.title_dk }}</td>
+                    <td>{{ item.title_en }}</td>
+                    <td>{{ datatypes[item.datatype - 1].text }}</td>
+                    <td>{{ categories[item.category].text }}</td>
+                    <td>{{ item.productionend }}</td>
+                  </tr>
+                </template>
+              </v-data-table> 
+              </v-col>
+            </v-row>
         </v-container>
       </v-form>
 
-        <v-data-table :items="$store.state.properties" :headers="headers">
-        <template v-slot:item="{item}" >
-          <tr class="datarow-bg" @click.stop="editItem(item)">
-            <td>{{ item.title_dk }}</td>
-            <td>{{ item.title_en }}</td>
-            <td>{{ datatypes[item.datatype - 1].text }}</td>
-            <td>{{ categories[item.category].text }}</td>
-            <td>{{ item.productionend }}</td>
-          </tr>
-        </template>
-      </v-data-table> 
+
 
     </div>
 

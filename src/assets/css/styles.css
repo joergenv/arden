@@ -28,3 +28,18 @@
     animation: fade 4s;
     opacity: 0;
 }
+
+/* Make content container scrollable, so there's no scrollbar beside the NAV */
+html, body{
+    overflow-y: hidden;
+  }
+  
+  /* you might need to adjust pixel amount based on current screen width*/
+  #content{
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    background-color: #58a174;
+  }
+  .ardenform {
+    background-color: #c6ccc9;
+  }

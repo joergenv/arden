@@ -1,7 +1,7 @@
 <template>
   
-  <v-app>
-    <v-toolbar>
+  <v-app class="overflow-hidden">    
+    <v-toolbar elevation="8">
       <v-toolbar-title>Taktormuseum</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
@@ -25,7 +25,7 @@
       </v-menu>
     </v-toolbar>
     
-    <v-content>
+    <v-content id="content">
       <router-view></router-view>
     </v-content>
     
@@ -44,6 +44,7 @@ export default {
       sidebar: false,
       menuItems: [
           { title: 'Home', path: '/', icon: 'mdi-home' },
+          { title: 'Udstilling', path: '/artifacts', icon: 'mdi-tractor-variant' },
           { title: 'Modeller', path: '/models', icon: 'mdi-tractor-variant' },
           { title: 'Fabrikater', path: '/manufacturers', icon: 'mdi-shield-star-outline' },
           { title: 'Egenskaber', path: '/properties', icon: 'mdi-baguette'},
