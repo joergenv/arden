@@ -9,6 +9,11 @@
         <a href="https://www.tractordata.com/farm-tractors/index.html" target="_blank"><v-icon icon="mdi-tractor-variant" class="mx-4"/>Traktordb</a>
 
         <a href="https://www.teamtractor.com/blog/help-me-understand-the-different-tractor-transmission-types--30304" target="_blank"><v-icon icon="mdi-tractor-variant" class="mx-4"/>transmisionstyper</a>
+
+      <br/>
+        <p>
+          <a href="https://trello.com/b/TMYK9fLP/trakmus">Trello projekt</a>
+        </p>        
    
 </template>
 

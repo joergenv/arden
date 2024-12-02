@@ -1,6 +1,6 @@
 <template>     
-     <h1>jensen</h1>
-     <p v-text="tekst"></p>
+     <h1>{{ title }}</h1>
+     <artifact-dialog v-model="showDetails" :eitem="artifact"/>
      <v-container grid-list-md>
         <v-row>
         <v-col
@@ -27,8 +27,10 @@
         <v-card-subtitle>
             Card subtitle secondary text
         </v-card-subtitle>
-        </v-card-item>
-
+        </v-card-item>        
+        <v-card-actions>
+          <v-btn icon="mdi-card-text-outline" @click.stop="viewDetails(n)"></v-btn>
+        </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
@@ -36,41 +38,28 @@
 </template>
     
 <script>
-    import { defineComponent } from 'vue';
+    import { defineComponent, ref } from 'vue';
+    import ArtifactDialog from '../components/ArtifactDialog';
 
     export default defineComponent({
         name: 'Artifact',
         data() {
-            return {
-                names: [
-                {first: 'Mathijs', last: 'de Ligt'},
-                {first: 'Virgil', last: 'van Dijk'},
-                {first: 'Thomas', last: 'MullerSuperLong'},
-                {first: 'Cristiano', last: 'Ronaldo'},
-                {first: 'Arjen', last: 'Robben'},
-                ],
-                tekst: "jensen"   
+            return {    
+                artifact: Object,       
+                title: "Udstilling",
+                showDetails:  ref(false)
             }
         },
-        computed: {            
-            textSize () {
-                switch (this.$vuetify.breakpoint.name) {
-                    case 'xs': return 'caption'
-                    case 'sm': return 'body-1'
-                    case 'md': return 'body-2'
-                    case 'lg': return 'subheading'
-                    case 'xl': return 'title'
-                }
-            },
-            calculateCols (){
-                switch (this.$vuetify.breakpoint.name) {
-                    case 'xs': return '1'
-                    case 'sm': return '3'
-                    case 'md': return '4'
-                    case 'lg': return '8'
-                    case 'xl': return '12'
-                }
+        methods: {
+            viewDetails: function(id){
+                this.artifact.id = id;
+                this.showDetails = !this.showDetails;
             }
+        },
+        components: {
+            ArtifactDialog
+        },
+        computed: {            
 		}
     });
 
