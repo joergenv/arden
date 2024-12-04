@@ -47,8 +47,8 @@
             return {    
                 artifact: Object,       
                 title: "Udstilling",
-                showDetails:  ref(false)
-            }
+                showDetails:  false
+            }            
         },
         methods: {
             viewDetails: function(id){

@@ -43,3 +43,11 @@ html, body{
   .ardenform {
     background-color: #c6ccc9;
   }
+  .v-input--custom-text-input-density .v-field--variant-plain, .v-input--custom-text-input-density .v-field--variant-underlined {
+    --v-input-control-height: 100px; 
+    --v-field-padding-top: 0px;
+    --v-field-padding-bottom: 0px;
+  }
+  .v-input--custom-text-input-density .v-field__input {
+    row-gap: 3.5px;
+  }
