@@ -1,6 +1,6 @@
 <template>     
      <h1>{{ title }}</h1>
-     <artifact-dialog v-model="showDetails" :eitem="artifact"/>
+     <artifact-dialog v-model="showDetails" :eitem="eitem" />
      <v-container grid-list-md>
         <v-row>
         <v-col
@@ -14,12 +14,7 @@
         >
         <v-card class="pa-4 ma-4" elevation="12" :variant="elevated" >
         <v-card-item>
-            <v-img
-      
-      width="100pct"
-      src="../assets/tractor.jpg"
-      cover
-    ></v-img>
+            <v-img width="100pct" src="../assets/tractor.jpg" cover></v-img>
         <v-card-title>
             tekst {{n}}
         </v-card-title>
@@ -45,14 +40,23 @@
         name: 'Artifact',
         data() {
             return {    
-                artifact: Object,       
+                eitem: {
+                    id: 0,
+                    manufacturer: 'Fergusson',
+                    tractorModel: '136A',
+                    year: 1935
+                },       
                 title: "Udstilling",
-                showDetails:  false
+                showDetails:  false,
             }            
         },
         methods: {
-            viewDetails: function(id){
-                this.artifact.id = id;
+            viewDetails: function(val){
+                //var item =  {id: val, manufacturer: this.artifact.manufacturer, tractorModel: this.artifact.tractorModel};
+                //this.eitem.id = val;
+                this.eitem = {id: val, manufacturer: this.eitem.manufacturer, tractorModel: this.eitem.tractorModel};
+                //this.eitem = item;
+                //this.eitem.id = val;
                 this.showDetails = !this.showDetails;
             }
         },

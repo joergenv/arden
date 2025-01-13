@@ -1,6 +1,9 @@
 <template>
   <v-dialog v-model="show" width="600px">
-   <v-card title="Egenskaber">
+   <v-card>
+    <v-title>
+      <div class="dialog-title"><h2> {{ title }}</h2></div>
+    </v-title>
     <v-divider class="mt-3"></v-divider>
     <v-card-text>
       <v-virtual-scroll :items="proplist" height="500">
@@ -17,30 +20,48 @@
       </v-virtual-scroll>
     </v-card-text>
      <v-card-actions>
-       <v-btn color="primary" flat @click.stop="show=false">Close</v-btn>
+       <v-btn color="primary" flat @click="save()">Gem</v-btn>
+       <v-btn color="primary" flat @click.stop="show=false">Luk</v-btn>
      </v-card-actions>
    </v-card>
  </v-dialog>
  </template>
  
  <script>
-    import { defineComponent, watch } from 'vue';
+    //import { defineComponent, watch } from 'vue';
     import { useStore } from 'vuex';
  
-   export default defineComponent({
+   export default {
        name: 'ArtifactDialog',
-       props: {    
-         eitem: Object,
-         modelValue: Boolean
+       props: {           
+        eitem: {},
+        modelValue: Boolean
        },
        data: function() {
         return {
-          editItem: this.eitem,
+          tractor: this.eitem,
+          title: '',
           show: this.modelValue,
-          properties: []
+          properties: [],
         }
        },
+       watch: {
+        show (val) {
+              this.$emit('update:modelValue', val);
+        },
+        modelValue (val) {
+            this.show = val;
+        },
+        eitem (val){
+          this.title = this.eitem.id + ' ' + this.eitem.manufacturer + ' ' + this.eitem.tractorModel;
+          console.log(val);
+        }
+      },
        methods: {
+        save: function() {
+          console.log('test');
+          this.show = false;
+        }
        },
        computed: {
         proplist: {
@@ -49,18 +70,10 @@
           }
         }
       },
-      watch: {
-        show: function (val) {
-              this.$emit('update:modelValue', val)
-          },
-        modelValue: function (val) {
-              this.show= val
-        },
-      },
       setup() {
         const store = useStore();
         store.dispatch('getProperties');
 
       }
-   });
+   };
  </script>

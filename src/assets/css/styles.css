@@ -51,3 +51,9 @@ html, body{
   .v-input--custom-text-input-density .v-field__input {
     row-gap: 3.5px;
   }
+  .dialog-title {
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 20px;
+    color:red;
+  }
